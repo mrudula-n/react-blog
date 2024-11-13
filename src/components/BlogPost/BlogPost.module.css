@@ -49,8 +49,8 @@
   .blogPostImage {
     width: 100%;
     max-height: 300px;
-    object-fit: cover; /* Ensure image scales nicely within the container */
-    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    object-fit: cover; 
+    border-radius: 8px 8px 0 0; 
     margin-bottom: 1rem;
   }   
 
@@ -68,7 +68,7 @@
   }
   
   .shareIcon:hover {
-    color: #007bff; /* Change color on hover */
+    color: #007bff; 
   }  
 
   .dark {
@@ -90,24 +90,20 @@
   }
 
   .dark .toggleButton {
-    background-color: #555; /* Darker background for dark mode */
-    color: #f8f8f8; /* Light text color for better contrast */
+    background-color: #555; 
+    color: #f8f8f8; 
   }
   
   .dark .toggleButton:hover {
-    background-color: #333; /* Darker shade on hover in dark mode */
+    background-color: #333; 
   }
-
-  .dark .shareIcon {
-    background-color: #333; /* Darker shade on hover in dark mode */
-  }
-  /* Dark mode styles */
+ 
   body.dark-mode .socialShare .shareIcon {
-    color: #fffefe; /* Brighter color for dark mode */
+    color: #fffefe; 
   }
   
   body.dark-mode .socialShare .shareIcon:hover {
-    color: #66b2ff; /* Lighter blue for dark mode hover effect */
+    color: #66b2ff; 
   }
 
   @keyframes fadeIn {

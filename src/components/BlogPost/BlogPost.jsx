@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FaWhatsapp, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import styles from './BlogPost.module.css';
+import LikeButton from '../LikeButton/LikeButton';
 
 function BlogPost({ title, content, author, date, readTime, image, isDarkMode }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,19 +13,8 @@ function BlogPost({ title, content, author, date, readTime, image, isDarkMode })
 
   const previewContent = content.length > 100 ? content.substring(0, 100) + '...' : content;
 
-  // Share URLs
-  const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-    `${title} - ${content}`
-  )}`;
-  const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    title
-  )}`;
-  const instagramUrl = `https://www.instagram.com/`;
-
   return (
-    <article
-      className={`${styles.blogPost} ${isDarkMode ? styles.dark : ''}`}
-    >
+    <article className={`${styles.blogPost} ${isDarkMode ? styles.dark : ''}`}>
       {image && <img src={image} alt={title} className={styles.blogPostImage} />}
 
       <div className={styles.blogPost__header}>
@@ -40,51 +30,21 @@ function BlogPost({ title, content, author, date, readTime, image, isDarkMode })
         {isExpanded ? content : previewContent}
       </div>
 
-      {/* Toggle button with keyboard support */}
-      <button
-        className={styles.toggleButton}
-        onClick={toggleExpanded}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleExpanded();
-          }
-        }}
-        tabIndex="0"
+      <button 
+        className={styles.toggleButton} 
+        onClick={toggleExpanded} 
         aria-expanded={isExpanded}
       >
         {isExpanded ? 'Read Less' : 'Read More'}
       </button>
 
-      {/* Social Share Buttons with keyboard support */}
+      {/* Like Button */}
+      <LikeButton initialLikes={0} isDarkMode={isDarkMode} />
+
       <div className={styles.socialShare}>
-        <a
-          href={whatsappShareUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Share on WhatsApp"
-          tabIndex="0"
-        >
-          <FaWhatsapp className={styles.shareIcon} />
-        </a>
-        <a
-          href={linkedinShareUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Share on LinkedIn"
-          tabIndex="0"
-        >
-          <FaLinkedin className={styles.shareIcon} />
-        </a>
-        <a
-          href={instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit Instagram"
-          tabIndex="0"
-        >
-          <FaInstagram className={styles.shareIcon} />
-        </a>
+        <a href="#" aria-label="Share on WhatsApp"><FaWhatsapp className={styles.shareIcon} /></a>
+        <a href="#" aria-label="Share on LinkedIn"><FaLinkedin className={styles.shareIcon} /></a>
+        <a href="#" aria-label="Visit Instagram"><FaInstagram className={styles.shareIcon} /></a>
       </div>
     </article>
   );
