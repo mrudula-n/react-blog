@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FaWhatsapp, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import styles from './BlogPost.module.css';
 import LikeButton from '../LikeButton/LikeButton';
+import CommentSection from '../CommentSection/CommentSection'; 
 
 function BlogPost({ title, content, author, date, readTime, image, isDarkMode }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -41,10 +42,14 @@ function BlogPost({ title, content, author, date, readTime, image, isDarkMode })
       {/* Like Button */}
       <LikeButton initialLikes={0} isDarkMode={isDarkMode} />
 
+
+      {/* Comment Section */}
+      <CommentSection postId={1} /> {/* Replace '1' with a unique post ID if available */}
+
       <div className={styles.socialShare}>
-        <a href="#" aria-label="Share on WhatsApp"><FaWhatsapp className={styles.shareIcon} /></a>
-        <a href="#" aria-label="Share on LinkedIn"><FaLinkedin className={styles.shareIcon} /></a>
-        <a href="#" aria-label="Visit Instagram"><FaInstagram className={styles.shareIcon} /></a>
+        <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><FaWhatsapp className={styles.shareIcon} /></a>
+        <a href="https://in.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"><FaLinkedin className={styles.shareIcon} /></a>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram"><FaInstagram className={styles.shareIcon} /></a>
       </div>
     </article>
   );
