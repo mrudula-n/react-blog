@@ -29,7 +29,6 @@ BlogList.propTypes = {
       content: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
-      readTime: PropTypes.number.isRequired,
       image: PropTypes.string, 
     })
   ).isRequired,

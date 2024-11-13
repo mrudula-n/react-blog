@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaWhatsapp, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import styles from './BlogPost.module.css';
 import LikeButton from '../LikeButton/LikeButton';
 import CommentSection from '../CommentSection/CommentSection'; 
+import { calculateReadTime } from '../../utils/readTime';
 
-function BlogPost({ title, content, author, date, readTime, image, isDarkMode }) {
+function BlogPost({ title, content, author, date, image, isDarkMode }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [readTime, setReadTime] = useState(0);
 
+  useEffect(() => {
+    setReadTime(calculateReadTime(content));
+  }, [content]);
+  
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const previewContent = content.length > 100 ? content.substring(0, 100) + '...' : content;
+  const displayContent = isExpanded 
+  ? content 
+  : content.slice(0, 200) + (content.length > 200 ? '...' : '');
 
   return (
     <article className={`${styles.blogPost} ${isDarkMode ? styles.dark : ''}`}>
@@ -28,7 +36,7 @@ function BlogPost({ title, content, author, date, readTime, image, isDarkMode })
       </div>
 
       <div className={styles.blogPost__content}>
-        {isExpanded ? content : previewContent}
+        {isExpanded ? content : displayContent}
       </div>
 
       <button 
@@ -60,7 +68,6 @@ BlogPost.propTypes = {
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  readTime: PropTypes.number.isRequired,
   image: PropTypes.string,
   isDarkMode: PropTypes.bool.isRequired,
 };
