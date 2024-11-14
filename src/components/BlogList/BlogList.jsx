@@ -8,6 +8,7 @@ function BlogList({ posts, isDarkMode }) {
       {posts.map(post => (
         <BlogPost
           key={post.id}
+          id={post.id}  // Pass the unique post ID here
           title={post.title}
           content={post.content}
           author={post.author}

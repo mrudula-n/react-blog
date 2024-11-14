@@ -59,6 +59,16 @@
   justify-content: center;
 }
 
+.blogPost__content {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.blogPost__content.expanded {
+  max-height: 1000px; /* Or a high enough value to reveal all content */
+}
+
 .shareIcon {
   color: #333;
   font-size: 1.5rem;

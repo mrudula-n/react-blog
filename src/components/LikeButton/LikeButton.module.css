@@ -51,4 +51,13 @@
   .darkLikeCount {
     color: white; /* White count color in dark mode */
   }
+
+  .likeButton {
+    transition: transform 0.1s ease;
+  }
+  
+  .likeButton:active {
+    transform: scale(1.2);
+  }
+  
   

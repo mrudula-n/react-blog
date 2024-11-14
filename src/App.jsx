@@ -5,18 +5,9 @@ import './App.css';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.body.classList.add('dark-mode');
-    } else {
-      setIsDarkMode(false);
-      document.body.classList.remove('dark-mode');
-    }
-  }, []);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    return localStorage.getItem('theme') === 'dark';
+  });
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -29,6 +20,14 @@ function App() {
       localStorage.setItem('theme', 'light');
     }
   };
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
 
   return (
     <div className="app">
