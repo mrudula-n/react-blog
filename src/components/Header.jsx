@@ -1,46 +1,30 @@
-import { useEffect, useState } from 'react';
+import PropTypes from "prop-types";
 
-function Header() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.body.classList.add('dark-mode');
-    } else {
-      setIsDarkMode(false);
-      document.body.classList.remove('dark-mode');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    if (newMode) {
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  };
-
+function Header({ isDarkMode, toggleDarkMode }) {
   return (
     <header className="blog-header">
       <h1>My Awesome Blog</h1>
       <nav>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
         </ul>
       </nav>
 
       <div className="toggle-switch" onClick={toggleDarkMode}>
-        <div className={`slider ${isDarkMode ? 'dark' : ''}`}></div>
+        <div className={`slider ${isDarkMode ? "dark" : ""}`}></div>
       </div>
     </header>
   );
 }
+
+Header.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired,
+};
 
 export default Header;

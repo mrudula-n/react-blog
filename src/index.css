@@ -1,13 +1,13 @@
 .blog-header {
   padding: 1rem;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   border-bottom: 1px solid #e9ecef;
   text-align: center;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  position: relative; 
+  position: relative;
   box-sizing: border-box;
 }
 
@@ -43,12 +43,14 @@
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .blog-header nav a:hover {
   text-decoration: underline;
-  color: #007bff
+  color: #007bff;
 }
 .toggle-switch {
   position: absolute;
@@ -70,7 +72,7 @@
 }
 
 .toggle-switch .slider::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 20px;
   height: 20px;
@@ -113,6 +115,78 @@ body.dark-mode .blog-header nav a {
 
 body.dark-mode .blog-header nav a:hover {
   color: #007bff;
+}
+
+.new-post-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 2rem;
+}
+
+.new-post-button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-post-button:hover {
+  background-color: #0056b3;
+}
+
+@media print {
+  /* Hide non-essential elements */
+  body * {
+    visibility: hidden;
+  }
+
+  .main-content,
+  .main-content * {
+    visibility: visible;
+  }
+
+  /* Hide the toggle switch and header */
+  .blog-header,
+  .toggle-switch {
+    display: none;
+  }
+
+  /* Adjust background and layout */
+  body {
+    background-color: white !important;
+    color: black;
+  }
+
+  .blogPost {
+    width: 100% !important;
+    max-width: none;
+    box-shadow: none;
+    background: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .blogPost__title {
+    font-size: 1.5em;
+  }
+
+  .blogPost__meta {
+    color: #333;
+    font-size: 0.9em;
+  }
+
+  .blogPost__content {
+    font-size: 1em;
+    line-height: 1.5;
+  }
 }
 
 /* Responsive Styles */
