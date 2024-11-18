@@ -83,13 +83,12 @@ mark {
 }
 
 .blogPost__content {
-  /* max-height: 300px; */
   overflow: hidden;
   transition: max-height 0.5s ease;
 }
 
 .blogPost__content.expanded {
-  max-height: 1000px; /* Or a high enough value to reveal all content */
+  max-height: 1000px;
 }
 
 .shareIcon {
@@ -103,7 +102,7 @@ mark {
 }
 
 .blogPost__meta {
-  margin-bottom: 0.5rem; /* Add spacing between meta details and Edit Post button */
+  margin-bottom: 0.5rem; 
 }
 
 .editPostButton {
@@ -115,7 +114,7 @@ mark {
   cursor: pointer;
   font-size: 0.9rem;
   transition: background-color 0.3s ease;
-  margin-top: 0.5rem; /* Adjust the spacing if needed */
+  margin-top: 0.5rem; 
 }
 
 .editPostButton:hover {
@@ -192,10 +191,10 @@ body.dark-mode .socialShare .shareIcon:hover {
 @media (max-width: 480px) {
   .blogPost {
     padding: 0.8rem;
-    max-width: 100%; /* Utilize the full width of the screen */
+    max-width: 100%; 
   }
 
   .blogPost__title {
-    font-size: 1.5rem; /* Adjust title size for small screens */
+    font-size: 1.5rem; 
   }
 }
