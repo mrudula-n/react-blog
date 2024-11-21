@@ -1,19 +1,89 @@
+/* Root Theme Variables */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #007bff;
+  --button-background: #007bff;
+  --button-color: #ffffff;
+  --title-color: #2c3e50; /* Light theme title color */
+  --font-size: 16px; /* Default font size */
+  --layout-spacing: 1rem; /* Default spacing */
+  --transition-duration: 300ms;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --link-color: #80d8ff;
+  --button-background: #333333;
+  --button-color: #ffffff;
+  --title-color: #f9f9f9; /* Dark theme title color */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--spacing);
+}
+
+/* General Body Styles */
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  font-size: var(--font-size);
+  line-height: 1.5;
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: var(--spacing);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Header */
 .blog-header {
   padding: 1rem;
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   border-bottom: 1px solid #e9ecef;
   text-align: center;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  position: relative; 
+  position: relative;
   box-sizing: border-box;
 }
 
 .blog-header h1 {
   margin: 0;
-  color: #333;
+  color: var(--text-color);
 }
 
 .blog-header nav {
@@ -34,22 +104,19 @@
   gap: 3rem;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .blog-header nav a {
-  text-decoration: none;
-  color: #333;
   font-weight: bold;
+  color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 }
 
 .blog-header nav a:hover {
-  text-decoration: underline;
-  color: #007bff
+  color: var(--link-color);
 }
+
+/* Theme Toggle Switch */
 .toggle-switch {
   position: absolute;
   top: 10px;
@@ -70,7 +137,7 @@
 }
 
 .toggle-switch .slider::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 20px;
   height: 20px;
@@ -89,30 +156,47 @@
   transform: translateX(26px);
 }
 
-body.dark-mode {
-  background-color: #333;
-  color: #f8f9fa;
+/* New Post Button */
+.new-post-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 2rem;
 }
 
-body.dark-mode .blog-header {
-  background-color: #222;
-  border-bottom: 1px solid #444;
+.new-post-button {
+  background-color: var(--button-background);
+  color: var(--button-color);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
-body.dark-mode .blog-header h1 {
-  color: #f8f9fa;
+.new-post-button:hover {
+  background-color: #0056b3;
 }
 
-body.dark-mode .blog-header nav {
-  background-color: #333;
+/* Blog Post Title */
+.blogPost__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--title-color); /* Use theme variable */
 }
 
-body.dark-mode .blog-header nav a {
-  color: #f8f9fa;
+.blogPost__meta {
+  color: var(--text-color);
+  font-size: 0.9em;
 }
 
-body.dark-mode .blog-header nav a:hover {
-  color: #007bff;
+.blogPost__content {
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 /* Responsive Styles */
@@ -133,5 +217,40 @@ body.dark-mode .blog-header nav a:hover {
     top: 0;
     right: 0;
     margin-top: 1rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  /* Hide non-essential elements */
+  body * {
+    visibility: hidden;
+  }
+
+  .main-content,
+  .main-content * {
+    visibility: visible;
+  }
+
+  /* Hide the toggle switch and header */
+  .blog-header,
+  .toggle-switch {
+    display: none;
+  }
+
+  /* Adjust background and layout */
+  body {
+    background-color: white !important;
+    color: black;
+  }
+
+  .blogPost {
+    width: 100% !important;
+    max-width: none;
+    box-shadow: none;
+    background: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 0;
   }
 }
